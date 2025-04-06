@@ -1,3 +1,4 @@
+%define debug_package %{nil}
 Name:           tor-static
 Version:        1743937280.ac0367b
 Release:        0
