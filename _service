@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm">
-    <param name="url">https://github.com/huakim/tor-static</param>
+    <param name="url">https://github.com/cretz/tor-static</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionformat">%ct.%h</param>

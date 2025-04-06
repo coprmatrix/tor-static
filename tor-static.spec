@@ -1,5 +1,5 @@
 Name:           tor-static
-Version:        1743932246.8dac0eb
+Version:        1743937280.ac0367b
 Release:        0
 Summary:        Tor static compiled library
 License:        GPL
@@ -23,6 +23,8 @@ BuildRequires: libzstd-devel
 BuildRequires: glibc-devel
 BuildRequires: po4a
 BuildRequires: golang
+BuildRequires: perl
+BuildRequires: perl(FindBin)
 BuildRequires: gettext-devel
 
 %description
@@ -32,6 +34,19 @@ BuildRequires: gettext-devel
 %autosetup
 
 %build
+for i in *
+do
+ if test -d "$i"
+ then
+  pushd "${i}"
+  mkdir dist/lib64 -p
+  ln lib64 dist/lib -s
+#  rm -rfv test || :
+#  rm -rfv tests || :
+  popd
+ fi
+done
+
 go run build.go build-all
 
 %install
