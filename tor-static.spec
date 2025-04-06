@@ -47,7 +47,7 @@ do
  fi
 done
 
-go run build.go build-all
+go run build.go --verbose build-all
 
 %install
 mkdir -p %{buildroot}%{_libdir}
