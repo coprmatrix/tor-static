@@ -1,6 +1,6 @@
 %define debug_package %{nil}
 Name:           tor-static
-Version:        1743937280.ac0367b
+Version:        1718029021.6ccf94f
 Release:        0
 Summary:        Tor static compiled library
 License:        GPL
@@ -35,20 +35,7 @@ BuildRequires: gettext-devel
 %autosetup
 
 %build
-for i in *
-do
- if test -d "$i"
- then
-  pushd "${i}"
-  mkdir dist/lib64 -p
-  ln lib64 dist/lib -s
-#  rm -rfv test || :
-#  rm -rfv tests || :
-  popd
- fi
-done
-
-go run build.go --verbose build-all
+env -i HOME=$HOME PATH=$PATH go run build.go --verbose build-all
 
 %install
 mkdir -p %{buildroot}%{_libdir}
